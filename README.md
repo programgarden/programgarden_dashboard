@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![NiceGUI](https://img.shields.io/badge/NiceGUI-2.22+-purple.svg)](https://nicegui.io/)
-[![Release](https://img.shields.io/github/v/tag/programgarden/programgarden?label=release&sort=semver&logo=github)](https://github.com/programgarden/programgarden_dashboard/releases)
+[![Release](https://img.shields.io/github/v/tag/programgarden/programgarden_dashboard?label=release&sort=semver&logo=github)](https://github.com/programgarden/programgarden_dashboard/releases)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL_3.0-blue.svg)](./LICENSE)
 [![Company: LS](https://img.shields.io/badge/지원되는_증권사-LS증권-008FC7.svg)]()
 [![Product: OverseasStock](https://img.shields.io/badge/지원되는_매매-해외주식,해외선물-purple.svg)]()
