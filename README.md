@@ -1,4 +1,4 @@
-# 소개
+# ProgramGarden Dashboard
 
 [![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![NiceGUI](https://img.shields.io/badge/NiceGUI-2.24+-purple.svg)](https://nicegui.io/)
@@ -50,7 +50,7 @@ dashboard.run()
 
 ## 📚 Gitbook 문서
 
-https://programgarden-dashboard.gitbook.io/programgarden-dashboard/undefined/gitbook_docs
+https://programgarden-dashboard.gitbook.io/docs
 
 <br>
 
