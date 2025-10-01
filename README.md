@@ -5,7 +5,6 @@
 [![Release](https://img.shields.io/github/v/tag/programgarden/programgarden_dashboard?label=release&sort=semver&logo=github)](https://github.com/programgarden/programgarden_dashboard/releases)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL_3.0-blue.svg)](./LICENSE)
 [![Company: LS](https://img.shields.io/badge/지원되는_증권사-LS증권-008FC7.svg)]()
-[![Product: OverseasStock](https://img.shields.io/badge/지원되는_매매-해외주식,해외선물-purple.svg)]()
 
 ![programgarden 그리고 ls](docs/images/programgarden_ls.png)
 
@@ -13,7 +12,7 @@
 - 해외 주식 주문 관련 기능 추가 예정
 - 해외 선물 주문 관련 기능 추가 예정
 
-> **⚠️ 경고**: ProgramGarden Dashboard는 현재 **테스트 버전**이므로 오류를 계속 확인하고 있습니다. 따라서 정식 버전이 출시되기 전까지는 일부 기능들이 제한되어 있습니다. 오픈소스 사용 시 발생하는 문제에 대한 책임은 사용자에게 있으며, 라이선스를 반드시 확인해 주세요. [라이선스 보기](라이선스 주소 추가 예정)
+> **⚠️ 경고**: ProgramGarden Dashboard는 현재 **테스트 버전**이므로 오류를 계속 확인하고 있습니다. 따라서 정식 버전이 출시되기 전까지는 일부 기능들이 제한되어 있습니다. 오픈소스 사용 시 발생하는 문제에 대한 책임은 사용자에게 있으며, 라이선스를 반드시 확인해 주세요. [라이선스 보기](./LICENSE)
 
 <br>
 
