@@ -27,7 +27,7 @@ from .utils.logger import get_logger
 class ComponentDefaults:
     """컴포넌트 기본 설정"""
     STOCK_CARD = (2, 2)
-    WATCHLIST = (4, 3)
+    WATCHLIST = (4, 3) 
     TRADING_VIEW_CHART = (6, 4)
     ACCOUNT = (4, 3)
     ORDER_PANEL = (2, 3)
@@ -38,9 +38,9 @@ class ProgramGardenDashboard:
     """NiceGUI 기반 해외 주식 대시보드"""
     
     def __init__(
-        self,
+        self, 
         title: str = "ProgramGarden Dashboard",
-        app_key: Optional[str] = None,
+        app_key: Optional[str] = None, 
         app_secret: Optional[str] = None,
         user_guide: bool = True
     ):
@@ -122,10 +122,15 @@ class ProgramGardenDashboard:
                 const columns = window.adaptiveGrid.calculateColumns(width);
                 const indicator = document.getElementById('adaptive-columns-indicator');
                 if (indicator) {{
+                    const statusColor = columns === 0 ? 'bg-red-100 border-red-300 text-red-700' : 'bg-blue-100 border-blue-300 text-blue-700';
+                    const statusIcon = columns === 0 ? '❌' : '🔲';
+                    const statusText = columns === 0 ? '숨김' : `${{columns}}컬럼`;
+                    
                     indicator.innerHTML = `
-                        <div class="flex items-center gap-1 px-2 py-1 rounded-md bg-blue-100 border border-blue-300">
-                            <span class="text-sm">🔲</span>
-                            <span class="text-sm font-medium text-blue-700">${{columns}}컬럼</span>
+                        <div class="flex items-center gap-1 px-2 py-1 rounded-md ${{statusColor}}">
+                            <span class="text-sm">${{statusIcon}}</span>
+                            <span class="text-sm font-medium">${{statusText}}</span>
+                            <span class="text-xs opacity-75">(${{width}}px)</span>
                         </div>
                     `;
                 }}
@@ -135,6 +140,7 @@ class ProgramGardenDashboard:
         // 적응형 그리드 이벤트 리스너
         window.addEventListener('gridColumnsChanged', updateAdaptiveColumns);
         window.addEventListener('load', updateAdaptiveColumns);
+        window.addEventListener('resize', updateAdaptiveColumns);
         </script>
         """)
         
@@ -147,7 +153,7 @@ class ProgramGardenDashboard:
                 ui.html('''
                     <div id="adaptive-columns-indicator" class="flex items-center">
                         <div class="flex items-center gap-1 px-2 py-1 rounded-md bg-blue-100 border border-blue-300">
-                            <span class="text-sm">�</span>
+                            <span class="text-sm">🔲</span>
                             <span class="text-sm font-medium text-blue-700">12컬럼</span>
                             <span class="text-xs text-blue-500">(0px)</span>
                         </div>
@@ -172,6 +178,24 @@ class ProgramGardenDashboard:
         # 🚀 적응형 그리드 메인 컨테이너
         with ui.column().classes('w-full min-h-screen bg-gray-50 p-0'):
             self.main_container = ui.element('div').classes('adaptive-grid-container')
+            
+        # 실제 화면 크기 감지를 위한 JavaScript
+        ui.add_head_html("""
+        <script>
+        // 실제 화면 크기를 서버로 전송하는 함수
+        function updateServerScreenWidth() {
+            const screenWidth = window.innerWidth;
+            // 서버 측 계산과 동기화를 위해 이벤트 발생
+            window.dispatchEvent(new CustomEvent('serverScreenWidthUpdate', {
+                detail: { screenWidth: screenWidth }
+            }));
+        }
+        
+        // 초기 로딩 시 화면 크기 업데이트
+        window.addEventListener('load', updateServerScreenWidth);
+        window.addEventListener('resize', updateServerScreenWidth);
+        </script>
+        """)
     
     def _generate_component_id(self, component_type: str, identifier: str = None) -> str:
         """컴포넌트 유니크 ID 생성"""
@@ -403,12 +427,22 @@ class ProgramGardenDashboard:
             else:
                 final_row, final_col, final_width, final_height = self.components_position[config['component_id']]
                 
-            # 적응형 그리드 클래스 생성
-            component_classes = self.grid_manager.get_component_classes(config['component_id'])
+            # 적응형 그리드 클래스 생성 (기본 화면 크기 가정)
+            component_classes = self.grid_manager.get_component_classes(config['component_id'], screen_width=1920)
+            
+            # 고정 위치 컴포넌트 속성 생성 (현재 컬럼 수 전달)
+            current_columns = self.grid_manager._calculate_current_columns(1920)
+            component_attributes = self.grid_manager.get_component_attributes(config['component_id'], current_columns)
+            
+            # props 문자열 생성
+            props_parts = [f'id="{config["component_id"]}"', f'data-component-id="{config["component_id"]}"']
+            for attr_name, attr_value in component_attributes.items():
+                props_parts.append(f'{attr_name}="{attr_value}"')
+            props_string = " ".join(props_parts)
             
             # 실제 UI 생성
             with self.main_container:
-                with ui.element('div').classes(component_classes).props(f'id="{config["component_id"]}" data-component-id="{config["component_id"]}"'):
+                with ui.element('div').classes(component_classes).props(props_string):
                     if config['type'] == 'stock_card':
                         component = StockCard(config['symbol'], self.market_data, final_width/final_height)
                     elif config['type'] == 'watchlist':
