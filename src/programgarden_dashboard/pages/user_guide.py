@@ -105,8 +105,8 @@ dashboard.add_trading_view_chart("AAPL")
                 with ui.card().classes('bg-gray-100 p-3'):
                     ui.code("""
 # .env 파일에 저장
-APPKEY=your_actual_app_key_here
-APPSECRET=your_actual_app_secret_here
+APPKEY="your_actual_app_key_here"
+APPSECRET="your_actual_app_secret_here"
 
 # Python 코드에서 사용
 import os
@@ -136,7 +136,7 @@ app_secret="실제_발급받은_APP_SECRET"
                 ui.markdown("**컴포넌트 위치 지정**")
                 with ui.card().classes('bg-gray-100 p-3'):
                     ui.code("""
-# position = (row, col, row_span, col_span)
+# position = (row, col, width, height)
 dashboard.add_stock_card("AAPL", position=(0, 0, 2, 2))
 dashboard.add_watchlist(["GOOGL", "TSLA"], position=(0, 2, 4, 4))
 dashboard.add_order_book("AAPL", position=(2, 0, 4, 2))
@@ -178,7 +178,7 @@ dashboard.add_order_book("AAPL", position=(2, 0, 4, 2))
                 ui.button(
                     'GitHub Repository', 
                     icon='code',
-                    on_click=lambda: ui.navigate.to('https://github.com/programgarden/programgarden_dashboard.git', new_tab=True)
+                    on_click=lambda: ui.navigate.to('https://github.com/programgarden/programgarden_dashboard', new_tab=True)
                 ).props('outline color=primary')
                 
                 ui.button(

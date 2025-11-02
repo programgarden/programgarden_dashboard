@@ -542,7 +542,7 @@ class ProgramGardenDashboard:
 
     def run(
             self,
-            favicon: str = '',
+            favicon: str = '⭐',
             host: str = '127.0.0.1',
             port: int = 8080,
             show: bool = True,

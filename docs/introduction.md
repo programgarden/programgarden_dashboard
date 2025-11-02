@@ -14,7 +14,7 @@
 
 ## 3. 핵심 특징
 
-**ProgramGarden Dashboard**는 파이썬 초보자가 간단한 코드만으로 자신만의 웹 대시보드를 쉽게 만들 수 있도록 설계된 주식 대시보드 라이브러리입니다. 대시보드 생성, 컴포넌트 추가, 대시보드 실행의 세 단계만으로 다양한 유형의 대시보드를 손쉽게 구축할 수 있습니다. 각 컴포넌트에 대한 자세한 설명은 [컴포넌트](component.md) 문서를 참고하세요.
+**ProgramGarden Dashboard**는 파이썬 초보자가 간단한 코드만으로 자신만의 웹 대시보드를 쉽게 만들 수 있도록 설계된 주식 대시보드 라이브러리입니다. 대시보드 생성, 컴포넌트 추가, 대시보드 실행의 세 단계만으로 다양한 유형의 대시보드를 손쉽게 구축할 수 있습니다. 각 컴포넌트에 대한 자세한 설명은 [컴포넌트](components/component.md) 문서를 참고하세요.
 
 대시보드의 UI는 파이썬의 [NiceGUI](https://nicegui.io/) 프레임워크를 기반으로 구현되었습니다. NiceGUI는 [Tailwind CSS](https://tailwindcss.com/)와 [Quasar](https://quasar.dev/)를 활용하여 현대적인 UI 스타일과 다양한 기능을 제공합니다. 사용자는 내장된 UI 컴포넌트를 자유롭게 커스텀할 수 있으며, 앞으로 추가될 *Factory* 기능을 통해 자신만의 디자인을 손쉽게 적용할 수 있습니다. 이를 통해 더욱 다양한 스타일의 대시보드를 경험하실 수 있습니다.
 
@@ -43,8 +43,8 @@ dashboard = ProgramGardenDashboard("나만의 대시보드")
 
 # 주요 종목 모니터링
 dashboard.add_stock_card("AAPL", position=(0, 0, 2, 2))   # 0행 0열 2x2 크기
-dashboard.add_stock_card("AAPL", position=(0, 2, 2, 3))   # 0행 2열 2x3 크기
-dashboard.add_stock_card("AAPL", position=(0, 4, 3, 2))   # 0행 4열 3x2 크기
+dashboard.add_stock_card("GOOGL", position=(0, 2, 2, 3))   # 0행 2열 2x3 크기
+dashboard.add_stock_card("TSLA", position=(0, 4, 3, 2))   # 0행 4열 3x2 크기
 
 # 호가창과 주문 패널
 dashboard.add_order_book("AAPL", position=(3, 0, 2, 4))   # 3행 0열 2x4 크기

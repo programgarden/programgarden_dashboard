@@ -48,7 +48,7 @@ NiceGUI ready to go on http://127.0.0.1:8080
 
 ## 3. 컴포넌트 추가하기
 
-- ### 자동배치
+- ### 자동 배치
 
 이제 비어 있는 대시보드를 하나씩 채워봅시다. 먼저 단일 종목 정보를 보여주는 주식 카드(`StockCard`) 컴포넌트를 추가해볼까요? `test_pgd.py` 파일에 아래와 같이 코드를 한 줄 추가하면 됩니다.
 
@@ -100,7 +100,7 @@ dashboard.run()
 
 ## 4. 대시보드 속성
 
-대시보드에는 4가지 주요 속성이 있습니다: `title`, `appkey`, `appsecret`, `user_guide`. 이 중 `appkey`와 `appsecret`은 [LS 증권 연동하기](docs/connect-ls.md) 문서에서 자세히 다루므로, 여기서는 `title`과 `user_guide`에 대해 설명합니다.
+대시보드에는 4가지 주요 속성이 있습니다: `title`, `appkey`, `appsecret`, `user_guide`. 이 중 `appkey`와 `appsecret`은 [LS 증권 연동하기](connect-ls.md) 문서에서 자세히 다루므로, 여기서는 `title`과 `user_guide`에 대해 설명합니다.
 
 | 속성명      | 설명                                         | 필수/선택 |
 | ----------- | ------------------------------------------- | --------- |
